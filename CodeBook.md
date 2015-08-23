@@ -2,7 +2,7 @@
 
 ## This describes what the script run_analysis.R is doing
 
-Note 1: The working directory must contain the "UCI HAR Dataset Directory". This directory is obtained when the Samsung dataset is unzipped.
+Note 1: The working directory must contain the "UCI HAR Dataset" directory. This directory is obtained when the Samsung dataset is unzipped.
 
 Note 2: Shorter variable names such as Acc for Acceleration, Gyro for Gyroscope etc. were preferred over the longer forms to keep the variable names manageable for subsequent analysis
 
