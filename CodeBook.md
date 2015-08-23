@@ -4,7 +4,7 @@
 
 Note 1: The working directory must contain the "UCI HAR Dataset" directory. This directory is obtained when the Samsung dataset is unzipped.
 
-Note 2: Shorter variable names such as Acc for Acceleration, Gyro for Gyroscope etc. were preferred over the longer forms to keep the variable names manageable for subsequent analysis
+Note 2: Shorter variable names such as Acc for Acceleration, Gyro for Gyroscope etc. were preferred over the longer forms to keep the variable names manageable for subsequent analysis. The Google R StyleGuide has been followed as far as possible. See [google](https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml)
 
 run_analysis.R takes the Samsung data set does the following things that generates the tidy data file that contains the means of the means and standard deviations of the original measurements grouped by subject ID and by activity
 
@@ -21,7 +21,7 @@ run_analysis.R takes the Samsung data set does the following things that generat
 * The activity and subject ID are added to the combined data set by cbind (This completes Step 1 of the assignment)
 
 
-* Any variables that contain the word "mean" or "std" are extracted from the feature names
+* Any variables that contain the word "mean" or "std" are extracted from the feature names using grep()
 * The original data set is subsetted using these columns to get only those columns that contain either a mean or std (standard deviation) in their name.
 * The activity labels are converted into labeled factors from the activity_labels.txt file
 
