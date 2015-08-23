@@ -6,7 +6,7 @@ Note 1: The working directory must contain the "UCI HAR Dataset" directory. This
 
 Note 2: Shorter variable names such as Acc for Acceleration, Gyro for Gyroscope etc. were preferred over the longer forms to keep the variable names manageable for subsequent analysis. The Google R StyleGuide has been followed as far as possible. See [google](https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml)
 
-run_analysis.R takes the Samsung data set does the following things that generates the tidy data file that contains the means of the means and standard deviations of the original measurements grouped by subject ID and by activity
+run_analysis.R takes the Samsung data set and does the following things that generates the tidy data file. The tidy data file contains the means of the means and standard deviations of the original measurements grouped by subject ID and by activity
 
 * Checks if dplyr is installed and available, if not it installs and loads the package
 * The feature names are loaded from the features.txt file
@@ -27,28 +27,28 @@ run_analysis.R takes the Samsung data set does the following things that generat
 
 * The column names in this data frame is then filtered to make the variable names meaningful using sub()
    1. Remove the left and right braces
-   2. Converts "-mean-X" to ".Mean.X"
-   3. Converts "-mean-Y" to ".Mean.Y"
-   4. Converts "-mean-Z" to ".Mean.X
-   5. Converts "-std-X" to ".Std.X"
-   6. Converts "-std-Y" to ".Std.Y"
-   7. Converts "-std-Z" to ".Std.Z"
-   8. Converts "-meanFreq" to ".MeanFreq"
-   9. Converts "-std" to ".Std"
-   10. Converts "-X" to ".X"
-   11. Converts "-Y" to ".Y"
-   12. Converts "-Z" to ".Z"
-   13. Converts "-mean" to ".Mean"
-   14. Converts "BodyBody" to "Body"
+   2. Replaces "-mean-X" to ".Mean.X"
+   3. Replaces "-mean-Y" to ".Mean.Y"
+   4. Replaces "-mean-Z" to ".Mean.X
+   5. Replaces "-std-X" to ".Std.X"
+   6. Replaces "-std-Y" to ".Std.Y"
+   7. Replaces "-std-Z" to ".Std.Z"
+   8. Replaces "-meanFreq" to ".MeanFreq"
+   9. Replaces "-std" to ".Std"
+   10. Replaces "-X" to ".X"
+   11. Replaces "-Y" to ".Y"
+   12. Replaces "-Z" to ".Z"
+   13. Replaces "-mean" to ".Mean"
+   14. Replaces "BodyBody" to "Body" since this is a duplicate
    15. Replaces "t" to "Time"
-   16. Converts "f" to "Freq"
+   16. Replaces "f" to "Freq"
    
 * The column names are renamed based on the above replacements/substitutions
 
-* uses group_by from the dplyr package to group the new data set by subject ID and Activity
-* uses summarise_each from the dplyr package to get the column means
+* Uses group_by() from the dplyr package to group the data set by subject ID and Activity
+* uses summarise_each() from the dplyr package to get the column means and puts it in tidyData
 * Adds "Mean." each variable name to indicate this is a mean value
-* Write out the tidy data set using write.table() function
+* Write out the tidy data set using write.table() function (tidyData.txt)
    
  
 
