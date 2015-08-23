@@ -1,5 +1,11 @@
-library(dplyr)
+# Check id dplyr is installed
 
+if(!require(dplyr)){
+  install.packages("dplyr")
+  library(dplyr)
+}
+
+# The working directory shhould containg the "UCI HAR Dataset" directory
 dirLoc = "UCI HAR Dataset"
 setwd(dirLoc)
 
@@ -42,14 +48,14 @@ selData <- allData[,selColumn]    # Select only those columns
 #allActivity <- rbind(trainActivity,testActivity)
 #allSubject <- rbind(trainSubject,testSubject)
 
-# This is the slimmed down dataset that only contains the means and std. deviations (Step 2)
+# This is the slimmed down dataset that only contains the means and std. deviations (Step # 2)
 allData <- cbind(allSubject,allActivity,selData)
 
-# Convert the Activity into a factor with labels
+# Convert the Activity into a factor with labels (Step # 3)
 allData$Activity <- factor(allData$Activity,levels=c(1,2,3,4,5,6), 
                            labels = c("WALKING","WALK UP", "WALK DOWN", "SITTING", "STANDING", "LAYING"))
 
-# Get the feature names & give meaningfull names
+# Get the feature names & give meaningfull names (Step # 4)
 featureNames <- names(allData)  # Keep in temporary vector for text processing 
 
 
@@ -74,7 +80,7 @@ txt <- sub("^f","Freq", txt)
 names(allData) <- txt
 
 
-# Create the Tidy Data Set
+# Create the Tidy Data Set (Step #5)
 
 a1 <- group_by(allData, SubjectID, Activity)  # Group Data by SubjectID and Actvity
 a2 <- summarise_each(a1,funs(mean))           # Take the mean of this grouped data set

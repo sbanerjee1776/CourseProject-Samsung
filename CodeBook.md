@@ -2,23 +2,28 @@
 
 ## This describes what the script run_analysis.R is doing
 
-Note: The working directory must contain the "UCI HAR Dataset Directory". This directory is obtained when the Samsung dataset is unzipped.
+Note 1: The working directory must contain the "UCI HAR Dataset Directory". This directory is obtained when the Samsung dataset is unzipped.
 
-run_analysis.R takes the Samsung data set does the following things thatgenerates the tidy data file that contains the means of the means and standard deviations of the original measurements grouped by subject ID and by activity
+Note 2: Shorter variable names such as Acc for Acceleration, Gyro for Gyroscope etc. were preferred over the longer forms to keep the variable names manageable for subsequent analysis
 
-* loads the dplyr package which is used later
+run_analysis.R takes the Samsung data set does the following things that generates the tidy data file that contains the means of the means and standard deviations of the original measurements grouped by subject ID and by activity
+
+* Checks if dplyr is installed and available, if not it installs and loads the package
 * The feature names are loaded from the features.txt file
 * Reads the training set, the training activity labels and subject ID
 * Reads the test set, the test activity labels and the test subject ID
-* The second column names in the training and test activity data frames are renamed to Activity
-* The second column names in the training and test subject data frames are renamed to SubjectID
-* The training set and the test set are combined with rbind to get the combined data set 
+* The V1 column names in the training and test activity data frames are renamed to Activity
+* The V1 column names in the training and test subject data frames are renamed to SubjectID
+* The training and test activity labels are combined with rbind
+* The training and test subject ID are combined with rbind
+* The training set and the test set are combined with rbind to get a combined data set 
 * The feature names are used to name the combined data set 
-* The activity and subject Id are added to the combined data set by cbind
-* The activity labels are converted into labeled factors from the activity_labels.txt file
+* The activity and subject ID are added to the combined data set by cbind (This completes Step 1 of the assignment)
+
 
 * Any variables that contain the word "mean" or "std" are extracted from the feature names
 * The original data set is subsetted using these columns to get only those columns that contain either a mean or standard deviation
+* The activity labels are converted into labeled factors from the activity_labels.txt file
 
 * The column names in this data frame is then filtered to make the variable names meaningful using sub()
    1. Remove the left and right braces
@@ -38,28 +43,30 @@ run_analysis.R takes the Samsung data set does the following things thatgenerate
    15. Replaces "t" to "Time"
    16. Converts "f" to "Freq"
    
- * The column names are renamed based on the above replacements/substitutions
- * uses group_by from the dplyr package to group the new data set by subject ID and Activity
- * uses summarise_each from the dplyr package to get the column means
- * Adds "Mean." each variable name to indicate this is a mean value
- * Write out the tidy data set using write.table() function
+* The column names are renamed based on the above replacements/substitutions
+
+* uses group_by from the dplyr package to group the new data set by subject ID and Activity
+* uses summarise_each from the dplyr package to get the column means
+* Adds "Mean." each variable name to indicate this is a mean value
+* Write out the tidy data set using write.table() function
    
  
 
 ## This describes the variables in the tidy set
+* There are 81 features including the Subject ID and Activity.
 
-* All features are mean variables and are prefixed by the word Mean
+* All features (other that SubjectID and Activity) are mean variables and are prefixed by the word Mean and are between -1 and +1
 * Time domain measurements and variables are have the word Time after the Mean prefix
 * Frequency domain variables have the word Freq after the Mean prefix
 * Gyro indicates measurements from the gyroscope
 * Acc indicates body acceleration
 * Gravity indicates gravitational acceleration
 * Jerk indicates the jerk (derivative of the acceleration) either gyroscopic or body
-* There are 81 features including the Subject ID and Activity.
-* 
+* The variables have .Mean or .Std at the end. These inducate either the mean or the standard deviation of the variables as in the original dataset
 
 *  SubjectID : ID of Test Subject
  * Activity: Factor w/ Six Levels: WALKING, WALK UP, WALK DOWN, SITTING, STANDING, LAYING
+ 
  
  * Mean.TimeBodyAcc.Mean.[XYZ] : Mean of the mean of the body acceleration in X, Y and Z directions in the time domain
  * Mean.TimeBodyAccJerk.Mean.[XYZ] : Mean of the mean of the body jerk in X, Y and Z directions in the time domain
@@ -103,8 +110,3 @@ run_analysis.R takes the Samsung data set does the following things thatgenerate
  * Mean.FreqBodyGyroJerkMag.Std: Mean of the standard devaition of magnitude of the body gyroscopic jerk in the frequency domain 
  
  
- 
- 
- 
-
-*  
