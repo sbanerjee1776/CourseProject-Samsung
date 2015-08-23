@@ -47,8 +47,9 @@ run_analysis.R takes the Samsung data set and does the following things that gen
 
 * Uses group_by() from the dplyr package to group the data set by subject ID and Activity
 * uses summarise_each() from the dplyr package to get the column means and puts it in tidyData
-* Adds "Mean." each variable name to indicate this is a mean value
-* Write out the tidy data set using write.table() function (tidyData.txt)
+* Prefixes "Mean." each variable name to indicate that all variables are means
+* Write out the tidy data set using write.table() function (tidyData.txt) in the working directory
+* This can be read in using: tidyData <- read.table("tidyData.txt", header = TRUE)
    
  
 
@@ -62,6 +63,7 @@ run_analysis.R takes the Samsung data set and does the following things that gen
 * Acc indicates body acceleration
 * Gravity indicates gravitational acceleration
 * Jerk indicates the jerk (derivative of the acceleration) either gyroscopic or body
+* Mag indicates the magnitude of the measured/calculated quantities
 * The variables have .Mean or .Std at the end. These indicate either the mean or the standard deviation of the variables as in the original dataset
 
 *  SubjectID : ID of Test Subject
@@ -108,5 +110,14 @@ run_analysis.R takes the Samsung data set and does the following things that gen
  * Mean.FreqGravityAccMag.Std: Mean of the standard deviation of the magnitude of the gravitational acceleration in the frequency domain
  * Mean.FreqBodyGyroMag.Std: Mean of the standard deviation of the maginitude of the gyroscopic measument in the frequency doimain
  * Mean.FreqBodyGyroJerkMag.Std: Mean of the standard devaition of magnitude of the body gyroscopic jerk in the frequency domain 
+ 
+ * Mean.FreqBodyAcc.MeanFreq.[XYZ]: Mean of the mean frequency of the body acceleration in the X,Y, or Z direction in frequency domain 
+ * Mean.FreqBodyAccMag.MeanFreq: Mean of the mean of the magnitude of the mean frequency of the Body Acceleration in frequency domain
+ 
+ * Mean.FreqBodyAccJerk.MeanFreq.[XYZ]: Mean of the mean frequency of the Body Jerk in the X,Y or Z direction in frequency domain
+ * Mean.FreqBodyAccJerkMag.MeanFreq: Mean of the mean of the magnitude of the mean frequency of the Body Jerk in frequency domain
+ 
+ * Mean.FreqBodyGyro.MeanFreq.[XYZ] : Mean of the mean frequency of the body gyroscopic value  in the X,Y or Z direction in frequency domain
+ * Mean.FreqBodyGyroMag.MeanFreq: Mean of the mean frequency of the magnitude of the body gyroscopic value in frequency domain
  
  

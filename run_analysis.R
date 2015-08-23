@@ -1,11 +1,11 @@
-# Check id dplyr is installed
+# Check if dplyr is installed
 
 if(!require(dplyr)){
   install.packages("dplyr")
   library(dplyr)
 }
 
-# The working directory shhould containg the "UCI HAR Dataset" directory
+# The working directory shhould contain the "UCI HAR Dataset" directory
 dirLoc = "UCI HAR Dataset"
 setwd(dirLoc)
 
