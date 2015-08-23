@@ -54,7 +54,7 @@ run_analysis.R takes the Samsung data set and does the following things that gen
  
 
 ## This describes the variables in the tidy set
-* There are 81 features including the Subject ID and Activity.
+* There are 81 features including the Subject ID and Activity. There are 180 rows in this data set
 
 * All features (other that SubjectID and Activity) are mean variables and are prefixed by the word Mean and are between -1 and +1
 * Time domain measurements and variables are have the word Time after the Mean prefix

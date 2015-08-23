@@ -97,7 +97,7 @@ names(a2) <- txt
 setwd("../")
 
 # Write Tidy Data Set
-write.table(a2, "tidyData.txt",row.name=FALSE)
+write.table(a2, "tidyData.txt", sep="\t",row.name=FALSE)
 
 
 
