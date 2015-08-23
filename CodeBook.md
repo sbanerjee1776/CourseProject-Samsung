@@ -66,7 +66,7 @@ run_analysis.R takes the Samsung data set and does the following things that gen
 * Mag indicates the magnitude of the measured/calculated quantities
 * The variables have .Mean or .Std at the end. These indicate either the mean or the standard deviation of the variables as in the original dataset
 
-*  SubjectID : ID of Test Subject
+*  SubjectID : ID of Test Subject: Integer from 1 to 30
  * Activity: Factor w/ Six Levels: WALKING, WALK UP, WALK DOWN, SITTING, STANDING, LAYING
  
  
