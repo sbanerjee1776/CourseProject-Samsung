@@ -22,7 +22,7 @@ run_analysis.R takes the Samsung data set does the following things that generat
 
 
 * Any variables that contain the word "mean" or "std" are extracted from the feature names
-* The original data set is subsetted using these columns to get only those columns that contain either a mean or standard deviation
+* The original data set is subsetted using these columns to get only those columns that contain either a mean or std (standard deviation) in their name.
 * The activity labels are converted into labeled factors from the activity_labels.txt file
 
 * The column names in this data frame is then filtered to make the variable names meaningful using sub()
@@ -62,7 +62,7 @@ run_analysis.R takes the Samsung data set does the following things that generat
 * Acc indicates body acceleration
 * Gravity indicates gravitational acceleration
 * Jerk indicates the jerk (derivative of the acceleration) either gyroscopic or body
-* The variables have .Mean or .Std at the end. These inducate either the mean or the standard deviation of the variables as in the original dataset
+* The variables have .Mean or .Std at the end. These indicate either the mean or the standard deviation of the variables as in the original dataset
 
 *  SubjectID : ID of Test Subject
  * Activity: Factor w/ Six Levels: WALKING, WALK UP, WALK DOWN, SITTING, STANDING, LAYING
